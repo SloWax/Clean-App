@@ -82,7 +82,7 @@ extension CleaningMethodViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let item = collectionView.dequeueReusableCell(withReuseIdentifier: CleanCategoryCustomItem.identifier, for: indexPath) as! CleanCategoryCustomItem
+        guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: CleanCategoryCustomItem.identifier, for: indexPath) as? CleanCategoryCustomItem else { fatalError() }
         item.label.text = cleanCategory[indexPath.item]
         return item
     }
@@ -101,7 +101,7 @@ extension CleaningMethodViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CleanMethodCustomCell.identifier, for: indexPath) as! CleanMethodCustomCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CleanMethodCustomCell.identifier, for: indexPath) as? CleanMethodCustomCell else { fatalError() }
         return cell
     }
 }
