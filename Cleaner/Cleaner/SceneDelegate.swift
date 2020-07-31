@@ -37,7 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         settingNavi.tabBarItem = UITabBarItem(title: "설정", image: UIImage(named: "user"), tag: 3)
         
         window?.rootViewController = tapbarController
-        window?.backgroundColor = .white
+        window?.backgroundColor = .systemBackground
         window?.makeKeyAndVisible()
     }
 }
