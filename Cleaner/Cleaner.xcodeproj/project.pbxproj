@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6E14187D24DAEE5100E7C49A /* CleanCategoryCustomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E14187C24DAEE5100E7C49A /* CleanCategoryCustomItem.swift */; };
+		6E14187D24DAEE5100E7C49A /* ArticleCustomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E14187C24DAEE5100E7C49A /* ArticleCustomItem.swift */; };
 		6E81ED7924D81776006E3BD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E81ED7824D81776006E3BD0 /* AppDelegate.swift */; };
 		6E81ED7B24D81776006E3BD0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E81ED7A24D81776006E3BD0 /* SceneDelegate.swift */; };
 		6E81ED8024D81776006E3BD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E81ED7E24D81776006E3BD0 /* Main.storyboard */; };
@@ -21,7 +21,7 @@
 		6E81EDB724D81B11006E3BD0 /* CleanMateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E81EDB624D81B11006E3BD0 /* CleanMateViewController.swift */; };
 		6E81EDB924D81B21006E3BD0 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E81EDB824D81B21006E3BD0 /* SettingViewController.swift */; };
 		6EC5F1AB24DC40CD00D132BE /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC5F1AA24DC40CD00D132BE /* UI.swift */; };
-		6EC5F1AD24DC589400D132BE /* CleanMethodCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC5F1AC24DC589400D132BE /* CleanMethodCustomCell.swift */; };
+		6EC5F1AF24DD767800D132BE /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC5F1AE24DD767800D132BE /* ProductViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6E14187C24DAEE5100E7C49A /* CleanCategoryCustomItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanCategoryCustomItem.swift; sourceTree = "<group>"; };
+		6E14187C24DAEE5100E7C49A /* ArticleCustomItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCustomItem.swift; sourceTree = "<group>"; };
 		6E81ED7524D81776006E3BD0 /* Cleaner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cleaner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E81ED7824D81776006E3BD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E81ED7A24D81776006E3BD0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 		6E81EDB624D81B11006E3BD0 /* CleanMateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanMateViewController.swift; sourceTree = "<group>"; };
 		6E81EDB824D81B21006E3BD0 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		6EC5F1AA24DC40CD00D132BE /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
-		6EC5F1AC24DC589400D132BE /* CleanMethodCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanMethodCustomCell.swift; sourceTree = "<group>"; };
+		6EC5F1AE24DD767800D132BE /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,8 +148,7 @@
 		6E81EDAB24D81925006E3BD0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				6E14187C24DAEE5100E7C49A /* CleanCategoryCustomItem.swift */,
-				6EC5F1AC24DC589400D132BE /* CleanMethodCustomCell.swift */,
+				6E14187C24DAEE5100E7C49A /* ArticleCustomItem.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -169,6 +168,7 @@
 				6E81EDB024D81A34006E3BD0 /* ScheduleViewController.swift */,
 				6E81EDB624D81B11006E3BD0 /* CleanMateViewController.swift */,
 				6E81EDB824D81B21006E3BD0 /* SettingViewController.swift */,
+				6EC5F1AE24DD767800D132BE /* ProductViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -306,13 +306,13 @@
 			files = (
 				6EC5F1AB24DC40CD00D132BE /* UI.swift in Sources */,
 				6E81EDB524D81A9B006E3BD0 /* CleaningMethodViewController.swift in Sources */,
-				6E14187D24DAEE5100E7C49A /* CleanCategoryCustomItem.swift in Sources */,
+				6E14187D24DAEE5100E7C49A /* ArticleCustomItem.swift in Sources */,
 				6E81EDB124D81A34006E3BD0 /* ScheduleViewController.swift in Sources */,
 				6E81ED7924D81776006E3BD0 /* AppDelegate.swift in Sources */,
 				6E81EDB724D81B11006E3BD0 /* CleanMateViewController.swift in Sources */,
 				6E81ED8324D81776006E3BD0 /* Cleaner.xcdatamodeld in Sources */,
-				6EC5F1AD24DC589400D132BE /* CleanMethodCustomCell.swift in Sources */,
 				6E81EDB924D81B21006E3BD0 /* SettingViewController.swift in Sources */,
+				6EC5F1AF24DD767800D132BE /* ProductViewController.swift in Sources */,
 				6E81ED7B24D81776006E3BD0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

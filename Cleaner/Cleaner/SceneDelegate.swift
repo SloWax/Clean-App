@@ -31,6 +31,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tapbarController = UITabBarController()
         tapbarController.viewControllers = [cleanMethodNavi, scheduleNavi, cleanMateNavi, settingNavi]
         
+        UITabBar.appearance().tintColor = .black
+        
         cleanMethodNavi.tabBarItem = UITabBarItem(title: "청소법", image: UIImage(named: "wash"), tag: 0)
         scheduleNavi.tabBarItem = UITabBarItem(title: "스케줄", image: UIImage(named: "event"), tag: 1)
         cleanMateNavi.tabBarItem = UITabBarItem(title: "청소 메이트", image: UIImage(named: "friend"), tag: 2)
