@@ -10,6 +10,12 @@ import UIKit
 
 class ProductViewController: UIViewController {
     
+    let backItem: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.title = "청소 가이드"
+        return button
+    }()
+    
     let titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
@@ -56,8 +62,9 @@ class ProductViewController: UIViewController {
     }
     func setUI() {
         view.backgroundColor = .systemBackground
+        
         navigationController?.navigationBar.tintColor = .black
-        navigationController?.navigationBar.topItem?.title = "청소 가이드"
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backItem
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()

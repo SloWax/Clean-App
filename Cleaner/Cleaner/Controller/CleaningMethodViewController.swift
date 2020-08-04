@@ -64,7 +64,7 @@ class CleaningMethodViewController: UIViewController {
         setLayout()
     }
     func setUI(){
-        navigationItem.titleView = titleLabel
+        navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: titleLabel)
         navigationItem.searchController = searchBar
         
         setButton()
