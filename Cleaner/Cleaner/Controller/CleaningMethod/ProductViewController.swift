@@ -10,7 +10,7 @@ import UIKit
 
 class ProductViewController: UIViewController {
     
-    let backItem: UIBarButtonItem = {
+    private let backItem: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.title = "청소 가이드"
         return button
@@ -31,7 +31,7 @@ class ProductViewController: UIViewController {
         return label
     }()
     
-    let viewScroll = UIScrollView()
+    private let viewScroll = UIScrollView()
     
     let explainImageView: UIImageView = {
         let imageView = UIImageView()
@@ -56,11 +56,11 @@ class ProductViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setUI()
         setLayout()
     }
-    func setUI() {
+    private func setUI() {
         view.backgroundColor = .systemBackground
         
         navigationController?.navigationBar.tintColor = .black
@@ -77,7 +77,7 @@ class ProductViewController: UIViewController {
         viewScroll.addSubview(explainImageView)
         viewScroll.addSubview(detailExplain)
     }
-    func setLayout() {
+    private func setLayout() {
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

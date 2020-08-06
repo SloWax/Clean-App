@@ -63,7 +63,7 @@ class CleaningMethodViewController: UIViewController {
         setUI()
         setLayout()
     }
-    func setUI(){
+    private func setUI(){
         navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: titleLabel)
         navigationItem.searchController = searchBar
         
@@ -75,7 +75,7 @@ class CleaningMethodViewController: UIViewController {
         
         view.addSubview(articleCollection)
     }
-    func setLayout() {
+    private func setLayout() {
         
         categoryScroll.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -97,7 +97,7 @@ class CleaningMethodViewController: UIViewController {
         ])
         
     }
-    func setButton() {
+    private func setButton() {
         var index = 0
         
         bathClean.addTarget(self, action: #selector(bathFunction(_:)), for: .touchUpInside)
@@ -131,34 +131,34 @@ class CleaningMethodViewController: UIViewController {
     @objc func bathFunction(_ sender: UIButton) {
         var othersButton = buttonArr
         othersButton.remove(at: 0)
-        changeText(othersButton)
+        setFont(othersButton)
         sender.titleLabel?.font = Design.boldNomalSize
     }
     @objc func kitchenFunction(_ sender: UIButton) {
         var othersButton = buttonArr
         othersButton.remove(at: 1)
-        changeText(othersButton)
+        setFont(othersButton)
         sender.titleLabel?.font = Design.boldNomalSize
     }
     @objc func livingFunction(_ sender: UIButton) {
         var othersButton = buttonArr
         othersButton.remove(at: 2)
-        changeText(othersButton)
+        setFont(othersButton)
         sender.titleLabel?.font = Design.boldNomalSize
     }
     @objc func toiletFunction(_ sender: UIButton) {
         var othersButton = buttonArr
         othersButton.remove(at: 3)
-        changeText(othersButton)
+        setFont(othersButton)
         sender.titleLabel?.font = Design.boldNomalSize
     }
     @objc func othersFunction(_ sender: UIButton) {
         var othersButton = buttonArr
         othersButton.remove(at: 4)
-        changeText(othersButton)
+        setFont(othersButton)
         sender.titleLabel?.font = Design.boldNomalSize
     }
-    func changeText(_ sender: [UIButton]) {
+    private func setFont(_ sender: [UIButton]) {
         sender.forEach {
             $0.titleLabel?.font = Design.nomalSize
         }
@@ -193,7 +193,7 @@ extension CleaningMethodViewController: UICollectionViewDelegateFlowLayout {
   // 아이템 사이즈
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let size = (collectionView.frame.width - (Design.edge.left + Design.edge.right) - (Design.padding * (Design.articleLineCount - 1))) / Design.articleLineCount
-    return CGSize(width: size, height: (size / 5) * 2)
+    return CGSize(width: size, height: size / 2.4)
   }
 }
 extension CleaningMethodViewController: UICollectionViewDelegate {

@@ -63,7 +63,9 @@ class ScheduleViewController: UIViewController {
     private lazy var checkListTable: UITableView = {
         let table = UITableView()
         table.rowHeight = 80
+        table.delegate = self
         table.dataSource = self
+        table.separatorStyle = .none
         table.register(CheckListCustomCell.self, forCellReuseIdentifier: CheckListCustomCell.identifier)
         return table
     }()
@@ -95,7 +97,6 @@ class ScheduleViewController: UIViewController {
         navigationItem.rightBarButtonItems = [plusButton, setButton]
         
         view.addSubview(checkListTable)
-        
         setLayout()
     }
     func setNaviButton() {
@@ -153,10 +154,18 @@ extension ScheduleViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CheckListCustomCell.identifier, for: indexPath) as? CheckListCustomCell else { fatalError() }
+        cell.selectionStyle = .none
         cell.titleLabel.text = "욕실 청소"
         cell.explainLabel.text = "수챗구멍 청소 외 2개의 청소가 밀려있어요."
         return cell
     }
-    
-    
+}
+
+extension ScheduleViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cardDetailVC = CardDetailViewController()
+        cardDetailVC.titleLabel.text = "욕실 청소"
+        cardDetailVC.simpleExplain.text = "다음 주에 커튼 빨래를 해야겠어요."
+        navigationController?.pushViewController(cardDetailVC, animated: true)
+    }
 }

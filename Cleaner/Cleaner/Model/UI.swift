@@ -12,7 +12,7 @@ import UIKit
 struct Design {
     static let padding: CGFloat = 30
     static let edge = UIEdgeInsets(top: 30, left: 15, bottom: 30, right: 15)
-    static let tableEdge = UIEdgeInsets.init(top: 5, left: 5, bottom: 5, right: 5)
+    static let tableEdge = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     static let articleLineCount: CGFloat = 1
     
     static let menuBorderWidth: CGFloat = 0.2

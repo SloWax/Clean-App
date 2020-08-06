@@ -26,7 +26,6 @@ class CheckListCustomCell: UITableViewCell {
         contentView.layer.borderColor = UIColor.black.cgColor
         contentView.layer.borderWidth = Design.menuBorderWidth
         contentView.layer.cornerRadius = Design.cornerRadius
-//        contentView.layer.masksToBounds = true
         contentView.backgroundColor = .white
         
         setTitleLabel()
