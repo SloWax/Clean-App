@@ -81,9 +81,9 @@ class CleaningMethodViewController: UIViewController {
         NSLayoutConstraint.activate([
             categoryScroll.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             categoryScroll.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,
-                                                    constant: Design.buttonPadding * 2),
+                                                    constant: Design.textPadding),
             categoryScroll.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
-                                                     constant: -Design.buttonPadding * 2),
+                                                     constant: -Design.textPadding),
             categoryScroll.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
                                                    constant: view.frame.height / 20)
         ])
@@ -204,7 +204,5 @@ extension CleaningMethodViewController: UICollectionViewDelegate {
         productVC.explainImageView.image = UIImage(named: "test")
         productVC.detailExplain.text = "텍스트"
         navigationController?.pushViewController(productVC, animated: true)
-    }
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
     }
 }

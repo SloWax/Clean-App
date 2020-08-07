@@ -60,15 +60,30 @@ class ScheduleViewController: UIViewController {
     
     private let naviLayer = CALayer()
     
+    private lazy var pageScroll: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.delegate = self
+        scrollView.isPagingEnabled = true
+        scrollView.showsHorizontalScrollIndicator = false
+        return scrollView
+    }()
     private lazy var checkListTable: UITableView = {
         let table = UITableView()
-        table.rowHeight = 80
         table.delegate = self
         table.dataSource = self
         table.separatorStyle = .none
         table.register(CheckListCustomCell.self, forCellReuseIdentifier: CheckListCustomCell.identifier)
         return table
     }()
+    private let pageController: UIPageControl = {
+        let controll = UIPageControl()
+        controll.numberOfPages = 2
+        controll.hidesForSinglePage = true
+        controll.pageIndicatorTintColor = .lightGray
+        controll.currentPageIndicatorTintColor = .black
+        return controll
+    }()
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -80,11 +95,17 @@ class ScheduleViewController: UIViewController {
         
         view.layer.addSublayer(naviLayer)
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        pageScroll.contentSize = CGSize(width: view.frame.width * 2,
+                                        height: pageScroll.frame.height
+        )
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUI()
+        setLayout()
     }
     func setUI() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -96,8 +117,9 @@ class ScheduleViewController: UIViewController {
         navigationItem.leftBarButtonItems = [checkButton, scheduleButton]
         navigationItem.rightBarButtonItems = [plusButton, setButton]
         
-        view.addSubview(checkListTable)
-        setLayout()
+        view.addSubview(pageScroll)
+        pageScroll.addSubview(checkListTable)
+        view.addSubview(pageController)
     }
     func setNaviButton() {
         checkCustomLabel.titleLabel?.font = Design.boldLargeSize
@@ -113,31 +135,53 @@ class ScheduleViewController: UIViewController {
         plusCustomLabel.addTarget(self, action: #selector(plusFunction(_:)), for: .touchUpInside)
     }
     func setLayout() {
+        pageScroll.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            pageScroll.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            pageScroll.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            pageScroll.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            pageScroll.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+        
         checkListTable.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            checkListTable.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            checkListTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            checkListTable.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            checkListTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            checkListTable.topAnchor.constraint(equalTo: pageScroll.topAnchor),
+            checkListTable.leadingAnchor.constraint(equalTo: pageScroll.leadingAnchor),
+            checkListTable.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
+            checkListTable.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor)
+        ])
+        
+        pageController.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            pageController.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            pageController.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor)
         ])
     }
     @objc func checkFunction(_ sender: UIButton) {
-        scheduleCustomLabel.setTitleColor(.lightGray, for: .normal)
-        scheduleCustomLabel.alpha = 0.5
-        scheduleCustomLabel.titleLabel?.font = Design.LargeSize
-        
-        checkCustomLabel.titleLabel?.font = Design.boldLargeSize
-        checkCustomLabel.setTitleColor(.black, for: .normal)
-        checkCustomLabel.alpha = 1
+        UIView.animate(withDuration: 0.3) {
+            self.pageScroll.contentOffset.x = 0
+            
+            self.scheduleCustomLabel.setTitleColor(.lightGray, for: .normal)
+            self.scheduleCustomLabel.alpha = 0.5
+            self.scheduleCustomLabel.titleLabel?.font = Design.LargeSize
+            
+            self.checkCustomLabel.titleLabel?.font = Design.boldLargeSize
+            self.checkCustomLabel.setTitleColor(.black, for: .normal)
+            self.checkCustomLabel.alpha = 1
+        }
     }
     @objc func scheduleFunction(_ sender: UIButton) {
-        checkCustomLabel.titleLabel?.font = Design.LargeSize
-        checkCustomLabel.setTitleColor(.lightGray, for: .normal)
-        checkCustomLabel.alpha = 0.5
-        
-        scheduleCustomLabel.titleLabel?.font = Design.boldLargeSize
-        scheduleCustomLabel.setTitleColor(.black, for: .normal)
-        scheduleCustomLabel.alpha = 1
+        UIView.animate(withDuration: 0.3) {
+            self.pageScroll.contentOffset.x = self.view.frame.width
+            
+            self.checkCustomLabel.titleLabel?.font = Design.LargeSize
+            self.checkCustomLabel.setTitleColor(.lightGray, for: .normal)
+            self.checkCustomLabel.alpha = 0.5
+            
+            self.scheduleCustomLabel.titleLabel?.font = Design.boldLargeSize
+            self.scheduleCustomLabel.setTitleColor(.black, for: .normal)
+            self.scheduleCustomLabel.alpha = 1
+        }
     }
     @objc func setFunction(_ sender: UIButton) {
         print("press")
@@ -162,10 +206,21 @@ extension ScheduleViewController: UITableViewDataSource {
 }
 
 extension ScheduleViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let size = (tableView.frame.width - (Design.tableEdge.left + Design.tableEdge.right))
+        return size / 5
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cardDetailVC = CardDetailViewController()
         cardDetailVC.titleLabel.text = "욕실 청소"
         cardDetailVC.simpleExplain.text = "다음 주에 커튼 빨래를 해야겠어요."
         navigationController?.pushViewController(cardDetailVC, animated: true)
+    }
+}
+
+extension ScheduleViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let page = Int(scrollView.contentOffset.x / view.frame.width)
+        pageController.currentPage = page
     }
 }

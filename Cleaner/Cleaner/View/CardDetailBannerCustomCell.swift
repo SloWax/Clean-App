@@ -10,12 +10,17 @@ import UIKit
 
 class CardDetailBannerCustomCell: UITableViewCell {
 
-    static let identifier = "CardDetailCustomCell"
+    static let identifier = "CardDetailBannerCustomCell"
     
     let imageView2 = UIImageView()
     private let titleView = UIView()
     let label = UILabel()
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        contentView.frame = contentView.frame.inset(by: Design.tableEdge)
+    }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         

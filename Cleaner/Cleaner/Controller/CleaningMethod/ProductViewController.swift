@@ -10,7 +10,7 @@ import UIKit
 
 class ProductViewController: UIViewController {
     
-    private let backItem: UIBarButtonItem = {
+    let backItem: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.title = "청소 가이드"
         return button
@@ -45,6 +45,7 @@ class ProductViewController: UIViewController {
         let textView = UITextView()
         textView.font = Design.nomalSize
         textView.textColor = .darkGray
+        textView.isUserInteractionEnabled = false
         textView.isScrollEnabled = false
         return textView
     }()

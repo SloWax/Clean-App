@@ -45,7 +45,6 @@ class CardDetailViewController: UIViewController {
     
     private lazy var cardDetailListTable: UITableView = {
         let table = UITableView()
-        table.rowHeight = 80
         table.delegate = self
         table.dataSource = self
         table.separatorStyle = .none
@@ -122,39 +121,40 @@ class CardDetailViewController: UIViewController {
         ])
     }
     private func setButtons() {
-        setButton.addTarget(self, action: #selector(setFuntion(_:)), for: .touchUpInside)
+        setButton.addTarget(self, action: #selector(setFunction(_:)), for: .touchUpInside)
         view.addSubview(setButton)
         
-        plusButton.addTarget(self, action: #selector(plusFuntion(_:)), for: .touchUpInside)
+        plusButton.addTarget(self, action: #selector(plusFunction(_:)), for: .touchUpInside)
         view.addSubview(plusButton)
     }
-    @objc func setFuntion(_ sender: UIButton) {
+    @objc func setFunction(_ sender: UIButton) {
         print("set")
     }
-    @objc func plusFuntion(_ sender: UIButton) {
+    @objc func plusFunction(_ sender: UIButton) {
         print("plus")
     }
 }
 
 extension CardDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row % 2 == 0 {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CardDetailCustomCell.identifier, for: indexPath) as? CardDetailCustomCell else { fatalError() }
-        let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY.MM.dd"
-        cell.selectionStyle = .none
-        cell.titleLabel.text = "커튼 빨래"
-        cell.repeatLabel.text = "반복: \("6")개월에 한번"
-        cell.lastCleanDateLabel.text = "마지막 청소일: \(formatter.string(from: Date()))"
-            return cell
-        } else {
+        if indexPath.row % 4 == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CardDetailBannerCustomCell.identifier, for: indexPath) as? CardDetailBannerCustomCell else { fatalError() }
             cell.imageView2.image = UIImage(named: "test")
             cell.label.text = "커튼 빨래"
+            cell.selectionStyle = .none
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CardDetailCustomCell.identifier, for: indexPath) as? CardDetailCustomCell else { fatalError() }
+            let formatter = DateFormatter()
+            formatter.dateFormat = "YYYY.MM.dd"
+            cell.titleLabel.text = "커튼 빨래"
+            cell.repeatLabel.text = "반복: \("6")개월에 한번"
+            cell.lastCleanDateLabel.text = "마지막 청소일: \(formatter.string(from: Date()))"
+            cell.selectionStyle = .none
             return cell
         }
     }
@@ -162,5 +162,29 @@ extension CardDetailViewController: UITableViewDataSource {
     
 }
 extension CardDetailViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let size = (tableView.frame.width - (Design.tableEdge.left + Design.tableEdge.right))
+        return indexPath.row % 4 == 1 ? (size / 2.5) : (size / 5)
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row % 4 == 1 {
+            guard let cell = tableView.cellForRow(at: indexPath) as? CardDetailBannerCustomCell else { fatalError() }
+            let productVC = ProductViewController()
+            productVC.backItem.title = titleLabel.text
+            productVC.titleLabel.text = cell.label.text
+            productVC.simpleExplain.text = "test"
+            productVC.explainImageView.image = UIImage(named: "test")
+            productVC.detailExplain.text = "텍스트"
+            navigationController?.pushViewController(productVC, animated: true)
+        } else {
+            guard let cell = tableView.cellForRow(at: indexPath) as? CardDetailCustomCell else { fatalError() }
+            let cleanCardVC = CleanCardDetailViewController()
+            cleanCardVC.backItem.title = titleLabel.text
+            cleanCardVC.titleLabel.text = titleLabel.text
+            cleanCardVC.bannerTitleLabel.text = cell.titleLabel.text
+            cleanCardVC.bannerDateLabel.text = cell.lastCleanDateLabel.text
+            cleanCardVC.simpleExplain.text = "test"
+            navigationController?.pushViewController(cleanCardVC, animated: true)
+        }
+    }
 }
