@@ -74,6 +74,7 @@ class CleaningMethodViewController: UIViewController {
         view.addSubview(categoryScroll)
         
         view.addSubview(articleCollection)
+        bathClean.titleLabel?.font = Design.boldNomalSize
     }
     private func setLayout() {
         

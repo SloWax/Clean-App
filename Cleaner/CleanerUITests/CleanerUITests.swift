@@ -9,8 +9,11 @@
 import XCTest
 
 class CleanerUITests: XCTestCase {
+    var app: XCUIApplication!
 
     override func setUpWithError() throws {
+        self.app = XCUIApplication()
+        self.app.launch()
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
         // In UI tests it is usually best to stop immediately when a failure occurs.
@@ -22,11 +25,14 @@ class CleanerUITests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
+    func test_할것() {
+        XCUIApplication().tabBars.buttons["스케줄"].tap()
+                
+    }
     func testExample() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
-        app.launch()
+                app.launch()
 
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
