@@ -341,5 +341,6 @@ class CleanCardDetailViewController: UIViewController {
     }
     @objc func completeFunction(_ sender: UIButton) {
         print("complete")
+        navigationController?.popViewController(animated: true)
     }
 }

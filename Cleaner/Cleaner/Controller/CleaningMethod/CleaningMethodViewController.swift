@@ -40,18 +40,7 @@ class CleaningMethodViewController: UIViewController {
         collectionView.register(ArticleCustomItem.self, forCellWithReuseIdentifier: ArticleCustomItem.identifier)
         return collectionView
     }()
-    private let collectionBorder = CALayer()
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        collectionBorder.backgroundColor = UIColor.black.cgColor
-        collectionBorder.frame = CGRect(x:0,
-                                        y: categoryScroll.frame.maxY + Design.textPadding,
-                                   width: articleCollection.frame.width,
-                                   height: Design.menuBorderWidth)
-        
-        view.layer.addSublayer(collectionBorder)
-    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         categoryScroll.contentSize = CGSize(width: othersClean.frame.maxX + Design.buttonPadding,
