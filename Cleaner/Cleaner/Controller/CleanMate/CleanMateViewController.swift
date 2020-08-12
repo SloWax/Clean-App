@@ -12,7 +12,7 @@ class CleanMateViewController: UIViewController {
     
     let label: UILabel = {
         let label = UILabel()
-        label.text = "mate"
+        label.text = "여기 같이 만들 개발자, 디자이너 구함"
         return label
     }()
 
@@ -23,6 +23,5 @@ class CleanMateViewController: UIViewController {
                              y: view.center.y,
                              width: 100, height: 50)
         view.addSubview(label)
-        
     }
 }

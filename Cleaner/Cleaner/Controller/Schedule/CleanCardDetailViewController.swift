@@ -133,6 +133,7 @@ class CleanCardDetailViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         let width = bannerView.frame.width - Design.padding - 5
+        
         repeatLayer.backgroundColor = UIColor.lightGray.cgColor
         repeatLayer.frame = CGRect(x: 0,
                                    y: Design.padding,

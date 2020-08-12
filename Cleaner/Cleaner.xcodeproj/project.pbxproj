@@ -11,6 +11,7 @@
 		6E14187D24DAEE5100E7C49A /* ArticleCustomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E14187C24DAEE5100E7C49A /* ArticleCustomItem.swift */; };
 		6E373A7E24E00F9100BF5678 /* CardDetailCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E373A7D24E00F9100BF5678 /* CardDetailCustomCell.swift */; };
 		6E373A8024E0312C00BF5678 /* CardDetailBannerCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E373A7F24E0312C00BF5678 /* CardDetailBannerCustomCell.swift */; };
+		6E373A8224E9616B00BF5678 /* advancedSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E373A8124E9616B00BF5678 /* advancedSetupViewController.swift */; };
 		6E81ED7924D81776006E3BD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E81ED7824D81776006E3BD0 /* AppDelegate.swift */; };
 		6E81ED7B24D81776006E3BD0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E81ED7A24D81776006E3BD0 /* SceneDelegate.swift */; };
 		6E81ED8324D81776006E3BD0 /* Cleaner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6E81ED8124D81776006E3BD0 /* Cleaner.xcdatamodeld */; };
@@ -56,6 +57,7 @@
 		6E14187C24DAEE5100E7C49A /* ArticleCustomItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCustomItem.swift; sourceTree = "<group>"; };
 		6E373A7D24E00F9100BF5678 /* CardDetailCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailCustomCell.swift; sourceTree = "<group>"; };
 		6E373A7F24E0312C00BF5678 /* CardDetailBannerCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailBannerCustomCell.swift; sourceTree = "<group>"; };
+		6E373A8124E9616B00BF5678 /* advancedSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = advancedSetupViewController.swift; sourceTree = "<group>"; };
 		6E81ED7524D81776006E3BD0 /* Cleaner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cleaner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E81ED7824D81776006E3BD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E81ED7A24D81776006E3BD0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				6E81EDB824D81B21006E3BD0 /* SettingViewController.swift */,
+				6E373A8124E9616B00BF5678 /* advancedSetupViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				6EC5F1B924E001A100D132BE /* CardDetailViewController.swift in Sources */,
 				6E81EDB524D81A9B006E3BD0 /* CleaningMethodViewController.swift in Sources */,
 				6E14187D24DAEE5100E7C49A /* ArticleCustomItem.swift in Sources */,
+				6E373A8224E9616B00BF5678 /* advancedSetupViewController.swift in Sources */,
 				6E373A7E24E00F9100BF5678 /* CardDetailCustomCell.swift in Sources */,
 				6E81EDB124D81A34006E3BD0 /* ScheduleViewController.swift in Sources */,
 				6E81ED7924D81776006E3BD0 /* AppDelegate.swift in Sources */,
