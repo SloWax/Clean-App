@@ -121,4 +121,10 @@ class ProductViewController: UIViewController {
                                                     constant: -Design.textPadding)
         ])
     }
+    func setValue(title: String, simpleEx: String, image: String, text: String) {
+        titleLabel.text = title
+        simpleExplain.text = simpleEx
+        explainImageView.image = UIImage(named: image)
+        detailExplain.text = text
+    }
 }

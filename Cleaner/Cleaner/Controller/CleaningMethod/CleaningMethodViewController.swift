@@ -11,6 +11,7 @@ import UIKit
 class CleaningMethodViewController: UIViewController {
     
     private let cleanCategory = ["욕실 청소", "주방 청소", "거실 청소", "화장실 청소", "기타 청소"]
+    private var cleanData: Category = bathData
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -59,6 +60,7 @@ class CleaningMethodViewController: UIViewController {
         setButton()
         categoryScroll.layer.borderWidth = Design.menuBorderWidth
         categoryScroll.layer.cornerRadius = Design.cornerRadius
+        categoryScroll.showsHorizontalScrollIndicator = false
         categoryScroll.alwaysBounceHorizontal = true
         view.addSubview(categoryScroll)
         
@@ -157,13 +159,14 @@ class CleaningMethodViewController: UIViewController {
 
 extension CleaningMethodViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return cleanData.data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: ArticleCustomItem.identifier, for: indexPath) as? ArticleCustomItem else { fatalError() }
-        item.label.text = cleanCategory[indexPath.item]
-        item.imageView.image = UIImage(named: "test")
+        item.setValue(image: cleanData.data[indexPath.item].image,
+                      title: cleanData.data[indexPath.item].title
+        )
         return item
     }
 }
@@ -189,10 +192,11 @@ extension CleaningMethodViewController: UICollectionViewDelegateFlowLayout {
 extension CleaningMethodViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let productVC = ProductViewController()
-        productVC.titleLabel.text = cleanCategory[indexPath.item]
-        productVC.simpleExplain.text = cleanCategory[indexPath.item]
-        productVC.explainImageView.image = UIImage(named: "test")
-        productVC.detailExplain.text = "텍스트"
+        productVC.setValue(title: cleanData.data[indexPath.item].title,
+                           simpleEx: cleanData.data[indexPath.item].simple,
+                           image: cleanData.data[indexPath.item].content[0].image,
+                           text: cleanData.data[indexPath.item].content[0].text
+        )
         navigationController?.pushViewController(productVC, animated: true)
     }
 }
